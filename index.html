@@ -285,7 +285,7 @@ function renderDays(){
   daysEl.innerHTML=DAYS.map(d=>{const [dn,tot]=counts(d),C=2*Math.PI*18,off=C*(1-(tot?dn/tot:0));
     return `<button class="day" role="tab" data-d="${d.id}" aria-selected="${d===cur}"><span class="pin l"></span><span class="pin r"></span>
     <span class="row"><b>${d.bib}</b><svg class="ring" viewBox="0 0 46 46" aria-hidden="true"><circle class="bgc" cx="23" cy="23" r="18"/><circle class="fg" cx="23" cy="23" r="18" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/></svg></span>
-    <span class="nm">${esc(d.name)}</span><span class="meta">${d.ex.length} ejercicios · ~${d.min} min</span>${st.done[d.id]===today()?'<span class="badge">Hecho hoy</span>':''}</button>`}).join('');
+    <span class="nm">${esc(d.name)}</span><span class="meta">${d.ex.length} ejercicios · ~${d.min} min</span></button>`}).join('');
 }
 let cur=DAYS[0],stages=[];
 const io=new IntersectionObserver(es=>{for(const en of es){const s=stages.find(x=>x.el===en.target);if(s)s.vis=en.isIntersecting}},{rootMargin:'120px'});
